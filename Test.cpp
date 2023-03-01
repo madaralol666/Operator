@@ -4,42 +4,29 @@
 
 using namespace std;
 
-Test& operator++(Test& test)
+Test operator++(Test& test)
 {
     test = static_cast<Test>(static_cast<int>(test) + 1);
-    if (static_cast<int>(test) >= static_cast<int>(Test::max))
-        return test = Test::min;
-    return test;
+    return static_cast<int>(test) >= static_cast<int>(Test::Max) ? test = Test::Min+1 : test;
 }
-Test& operator++(Test& test, int)
+Test operator++(Test& test, int)
 {
-    Test a = test;
+    Test a = test; 
     test = static_cast<Test>(static_cast<int>(test) + 1);
-    if (static_cast<int>(test) >= static_cast<int>(Test::max))
-        return test = Test::min;
-    return test;
+    return static_cast<int>(test) >= static_cast<int>(Test::Max) ? a = Test::Min+1 : test;
 }
-Test operator+(Test test, int a)
+Test operator+(Test test , int a)
 {
-    if (static_cast<int>(test) + a >= static_cast<int>(Test::max))
-        return test = Test::min;
-    return static_cast<Test>(static_cast<int>(test) + a);
+    return static_cast<int>(test) + a >= static_cast<int>(Test::Max) ? Test::Min+1 : static_cast<Test>(static_cast<int>(test) + a);
 }
 Test operator+(int a, Test test)
 {
-    if (static_cast<int>(test) + a >= static_cast<int>(Test::max))
-        return test = Test::min;
-    return static_cast<Test>(static_cast<int>(test) + a);
-};
-
-void print(Test& test) 
+    return static_cast<int>(test) + a >= static_cast<int>(Test::Max) ? Test::Min+1 : static_cast<Test>(static_cast<int>(test) + a);
+}
+void print(Test test) 
 {
     string Days[3] = { "Bmw", "Mercedes", "lada filanda" };
-    if (test == Test::min || test == Test::max)
-    {
-    }
+    if (test == Test::Min || test == Test::Max){}
     else
-    {
         cout << Days[static_cast<int>(test) - 1] << std::endl;
-    }
 }

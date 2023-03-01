@@ -1,16 +1,16 @@
 #pragma once
 enum class Test
-{	min,
+{	Min,
 	bmw,
 	mercedes,
 	lada,
-	max
+	Max
 };
-Test& operator++(Test&);
-Test& operator++(Test&, int);
+Test operator++(Test&);
+Test operator++(Test&, int);
 Test operator+(Test, int);
 Test operator+(int, Test);
-void print(Test&);
+void print(Test);
 
 
 
