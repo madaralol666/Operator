@@ -23,6 +23,10 @@ Test operator+(int a, Test test)
 {
     return static_cast<int>(test) + a >= static_cast<int>(Test::Max) ? Test::Min+1 : static_cast<Test>(static_cast<int>(test) + a);
 }
+Test operator-(Test test, int a) 
+{
+    return static_cast<int>(test) - a <= static_cast<int>(Test::Min) ? Test::Max + 1 : static_cast<Test>(static_cast<int>(test) - a);
+}
 void print(Test test) 
 {
     string Days[3] = { "Bmw", "Mercedes", "lada filanda" };

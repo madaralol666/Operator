@@ -5,5 +5,4 @@ int main()
 {
     Test a = Test::lada;
     print(operator++(a, 1));
-    
 }
